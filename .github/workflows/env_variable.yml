@@ -1,0 +1,11 @@
+name : env_variable
+on : [push]
+env : 
+  EXAM : "Defined by workflow"
+jobs : 
+  env_variable_job : 
+    runs-on : ubuntu-latest
+    env : 
+      EXAM : "Defined by job"
+    steps : 
+      - run : echo "${{ env.EXAM }}"
