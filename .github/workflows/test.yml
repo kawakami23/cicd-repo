@@ -1,0 +1,13 @@
+name : Contexts
+on : [push]
+jobs : 
+  contexts : 
+    runs-on : ubuntu-latest
+    env : 
+      ACTOR : "${{ github.actor }}"
+      USERNAME : "${{ vars.USERNAME }}"
+      PASSWORD : "${{ secrets.PASS }}"
+    steps : 
+      - run : echo "${ACTOR}"
+      - run : echo "${USERNAME}"
+      - run : echo "${PASSWORD}"
