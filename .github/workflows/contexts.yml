@@ -1,0 +1,9 @@
+name : Contexts
+on : [push]
+jobs : 
+  contexts : 
+    runs-on : ubuntu-latest
+    steps : 
+      - run : echo "${{ github.actor }}"
+      - run : echo "${{ github.event }}"
+      - run : echo "${{ github.repository }}"
