@@ -12,9 +12,9 @@ jobs :
       FUNC_TEST : "${{ contains('test', 'st') }}"
     steps : 
       - run : echo "${ACTOR}"
-      - run : echo "${username}"
+      - run : echo "${USERNAME}"
       - run : echo "${PASSWORD}"
       - run : printenv | grep 'LITERAL_'
       - run : printenv | grep 'FUNC_'
-        dev : 
-          username : "test"
+        env : 
+          FUNC_STEP : "${{ contains('step', 'te') }}"
