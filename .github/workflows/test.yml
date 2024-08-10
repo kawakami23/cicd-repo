@@ -1,7 +1,7 @@
-name : Contexts
+name : Test
 on : [push]
 jobs : 
-  contexts : 
+  Test : 
     runs-on : ubuntu-latest
     env : 
       ACTOR : "${{ github.actor }}"
@@ -11,3 +11,4 @@ jobs :
       - run : echo "${ACTOR}"
       - run : echo "${USERNAME}"
       - run : echo "${PASSWORD}"
+      - run : printenv
