@@ -11,7 +11,7 @@ jobs :
     steps : 
       - uses : actions/checkout@v4
       - name : COMMENT PULL REQUEST
-        run : gh pr comment "${GITHUB_HEAD_REF}"" --body "Hello, ${GITHUB_ACTOR}! This is a test comment."
+        run : gh pr comment "${GITHUB_HEAD_REF}" --body "Hello, ${GITHUB_ACTOR}! This is a test comment."
         env :
           GITHUB_TOKEN : "${{ secrets.GITHUB_TOKEN }}"
         
