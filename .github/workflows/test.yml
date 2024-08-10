@@ -9,7 +9,7 @@ jobs :
       PASSWORD : "${{ secrets.PASS }}"
       LITERAL_NULL : "{{ null }}"
       LITERAL_NUMBER : "{{ 123 }}"
-      FUNC_TEST : "${{ containts('test', 'st') }}"
+      FUNC_TEST : "${{ contains('test', 'st') }}"
     steps : 
       - run : echo "${ACTOR}"
       - run : echo "${USERNAME}"
