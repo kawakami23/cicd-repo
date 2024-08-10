@@ -7,8 +7,10 @@ jobs :
       ACTOR : "${{ github.actor }}"
       USERNAME : "${{ vars.USERNAME }}"
       PASSWORD : "${{ secrets.PASS }}"
+      LITERAL_NULL : "{{ null }}"
+      LITERAL_NUMBER : "{{ 123 }}"
     steps : 
       - run : echo "${ACTOR}"
       - run : echo "${USERNAME}"
       - run : echo "${PASSWORD}"
-      - run : printenv
+      - run : printenv | grep 'LITERAL'
