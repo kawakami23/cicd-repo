@@ -10,11 +10,23 @@ jobs :
       PASSWORD : "${{ secrets.PASS }}"
       FUNC_JOB : "${{ contains('test', 'st') }}"
     steps : 
+      # Check Variables
       - name : SHOW MY NAME
         run : echo "${USERNAME}"
       - name : SHOW MY PASSWORD BUT NOT SHOW
         run : echo "${PASSWORD}"
+
+      # Check Function
       - name : FUNCTION CHECK
         run : printenv | grep 'FUNC_'
         env : 
           FUNC_STEP : "${{ contains('step', 'te') }}"
+
+      # Check Data Sharing between steps
+      - id : data_create
+        name : DATA CREATE
+        run : echo "key1=value1" >> "$GITHUB_OUTPUT"
+      - name : DATA RECIEVE
+        run : echo "${OUTPUT}"
+        env : 
+          OUTPUT : "${{ steps.data_create.outputs.key1 }}"
