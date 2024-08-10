@@ -9,8 +9,10 @@ jobs :
       PASSWORD : "${{ secrets.PASS }}"
       LITERAL_NULL : "{{ null }}"
       LITERAL_NUMBER : "{{ 123 }}"
+      FUNC_TEST : "${{ containts('test', 'st') }}"
     steps : 
       - run : echo "${ACTOR}"
       - run : echo "${USERNAME}"
       - run : echo "${PASSWORD}"
-      - run : printenv | grep 'LITERAL'
+      - run : printenv | grep 'LITERAL_'
+      - run : printenv | grep 'FUNC_'
