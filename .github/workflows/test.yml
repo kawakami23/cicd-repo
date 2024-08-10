@@ -1,20 +1,20 @@
-name : Test
+name : TEST WORKFLOW
+run-name : Run by ${{ github.actor }}
 on : [push]
 jobs : 
   Test : 
+    name : TEST JOB
     runs-on : ubuntu-latest
     env : 
-      ACTOR : "${{ github.actor }}"
       USERNAME : "${{ vars.USERNAME }}"
       PASSWORD : "${{ secrets.PASS }}"
-      LITERAL_NULL : "{{ null }}"
-      LITERAL_NUMBER : "{{ 123 }}"
-      FUNC_TEST : "${{ contains('test', 'st') }}"
+      FUNC_JOB : "${{ contains('test', 'st') }}"
     steps : 
-      - run : echo "${ACTOR}"
-      - run : echo "${USERNAME}"
-      - run : echo "${PASSWORD}"
-      - run : printenv | grep 'LITERAL_'
-      - run : printenv | grep 'FUNC_'
+      - name : SHOW MY NAME
+        run : echo "${USERNAME}"
+      - name : SHOW MY PASSWORD BUT NOT SHOW
+        run : echo "${PASSWORD}"
+      - name : FUNCTION CHECK
+        run : printenv | grep 'FUNC_'
         env : 
           FUNC_STEP : "${{ contains('step', 'te') }}"
