@@ -8,13 +8,14 @@ jobs :
     permissions : 
       contents : read
       pull-requests: write
+    # TOKENはJOBレベルで定義することも可能
+    # だが、この場合にはすべてのSTEPで利用可能となり、セキュリティリスクが高まる
+    # 使うSTEPレベルで定義することがベター
     env :
       GITHUB_TOKEN : "${{ secrets.GITHUB_TOKEN }}"
     steps : 
       - uses : actions/checkout@v4
       - name : COMMENT PULL REQUEST
         run : gh pr comment "${GITHUB_HEAD_REF}" --body "Hello, ${GITHUB_ACTOR}! This is a test comment."
-      - name : COMMENT PULL REQUEST_v2
-        run : gh pr comment "${GITHUB_HEAD_REF}" --body "Good Evening, ${GITHUB_ACTOR}! This is a test comment."
         
     
