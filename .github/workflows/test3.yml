@@ -1,0 +1,18 @@
+# 4.2実装
+name: TEST WORKFLOW3
+run-name: Run by ${{ github.actor }}
+on: 
+  pull_request:
+    paths:
+      ['go/**/*.go']
+jobs:
+  Test:
+    name: TEST JOB3
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: 1.22
+      - name: Auto Test
+        run: go test go/excellent/*.go
