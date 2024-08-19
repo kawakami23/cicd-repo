@@ -6,4 +6,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "::error::This is an error"
+      
+  Test2:
+    name: TEST JOB5
+    runs-on: ubuntu-latest
+    steps:
       - run: echo "::warning::This is a warning"
