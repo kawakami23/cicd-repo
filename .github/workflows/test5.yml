@@ -1,7 +1,10 @@
 # this is github actions workflow file
 name : TEST WORKFLOW5
 run-name : WORKFLOW5 RUNS BY ${{ github.actor }}
-on : [pull_request, push]
+on : 
+  push:
+  pull_request:
+    types : [opened, synchronize]
 jobs : 
   job_1:
     runs-on: ubuntu-latest
