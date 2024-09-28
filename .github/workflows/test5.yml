@@ -2,6 +2,8 @@
 name : TEST WORKFLOW5
 run-name : WORKFLOW5 RUNS BY ${{ github.actor }}
 on : 
+  push:
+    branches : [main]
   pull_request:
     types : [opened, synchronize]
 jobs : 
@@ -12,10 +14,10 @@ jobs :
       TEST : "This is a test"
     steps : 
       - name : CHECKOUT REPOSITORY
-        run : echo ${{ env.TEST }}
-      - name : PRINT ENVIRONMENT VARIABLES
-        run : printenv
-      - name : comment on PR
-        run : gh pr comment "${GITHUB_HEAD_REF}" --body "Hello, ${GITHUB_ACTOR}! This is a test comment."
-        env : 
-          GITHUB_TOKEN : "${{ secrets.GITHUB_TOKEN }}"
+        run : actions/checkout@v4
+      - name : Check current branch
+        run : echo "Current branch is ${GITHUB_HEAD_REF}"
+      # - name : comment on PR
+      #   run : gh pr comment "${GITHUB_HEAD_REF}" --body "Hello, ${GITHUB_ACTOR}! This is a test comment."
+      #   env : 
+      #     GITHUB_TOKEN : "${{ secrets.GITHUB_TOKEN }}"
