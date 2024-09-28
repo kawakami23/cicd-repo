@@ -8,5 +8,8 @@ on :
 jobs : 
   job_1:
     runs-on: ubuntu-latest
+    env :
+      TEST : "This is a test"
     steps : 
-      - run : cat /etc/os-release
+      - run : echo ${TEST}
+      - run : printenv
