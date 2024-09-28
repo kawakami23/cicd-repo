@@ -11,5 +11,5 @@ jobs :
     env :
       TEST : "This is a test"
     steps : 
-      - run : echo ${TEST}
+      - run : echo ${{ env.TEST }}
       - run : printenv
