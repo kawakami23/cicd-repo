@@ -14,7 +14,7 @@ jobs :
       TEST : "This is a test"
     steps : 
       - name : CHECKOUT REPOSITORY
-        run : actions/checkout@v4
+        uses : actions/checkout@v4
       - name : Check current branch
         run : echo "Current branch is ${GITHUB_HEAD_REF}"
       # - name : comment on PR
