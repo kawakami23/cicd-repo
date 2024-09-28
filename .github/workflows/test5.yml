@@ -2,14 +2,20 @@
 name : TEST WORKFLOW5
 run-name : WORKFLOW5 RUNS BY ${{ github.actor }}
 on : 
-  push:
   pull_request:
     types : [opened, synchronize]
 jobs : 
   job_1:
+    name : JOB1
     runs-on: ubuntu-latest
     env :
       TEST : "This is a test"
     steps : 
-      - run : echo ${{ env.TEST }}
-      - run : printenv
+      - name : CHECKOUT REPOSITORY
+        run : echo ${{ env.TEST }}
+      - name : PRINT ENVIRONMENT VARIABLES
+        run : printenv
+      - name : comment on PR
+        run : gh pr comment "${GITHUB_HEAD_REF}" --body "Hello, ${GITHUB_ACTOR}! This is a test comment."
+        env : 
+          GITHUB_TOKEN : "${{ secrets.GITHUB_TOKEN }}"
