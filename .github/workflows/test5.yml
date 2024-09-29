@@ -15,9 +15,9 @@ jobs :
     steps : 
       - name : CHECKOUT REPOSITORY
         uses : actions/checkout@v4
-      - name : CHECK BRANSCH
+      - name : CHECK BRANCH
         run : echo "Current branch is ${GITHUB_REF_NAME}"
-      # - name : comment on PR
-      #   run : gh pr comment "${GITHUB_HEAD_REF}" --body "Hello, ${GITHUB_ACTOR}! This is a test comment."
-      #   env : 
-      #     GITHUB_TOKEN : "${{ secrets.GITHUB_TOKEN }}"
+      - name : PROCESS NUMBER
+        run : ps
+      - name : PROCESS NUMBER2
+        run : ps
