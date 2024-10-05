@@ -1,19 +1,42 @@
-name : TEST WORKFLOW2
-run-name : Run by ${{ github.actor }}
-on : [pull_request]
-jobs : 
-  Test : 
-    name : TEST JOB2
-    runs-on : ubuntu-latest
-    permissions : 
-      contents : read
-      pull-requests: write
-    # TOKENはJOBレベルで定義することも可能
-    # だが、この場合にはすべてのSTEPで利用可能となり、セキュリティリスクが高まる
-    # 使うSTEPレベルで定義することがベター
-    steps : 
-      - uses : actions/checkout@v4
-      - name : COMMENT PULL REQUEST
-        run : gh pr comment "${GITHUB_HEAD_REF}" --body "Hello, ${GITHUB_ACTOR}! This is a test comment."
-        env :
-          GITHUB_TOKEN : "${{ secrets.GITHUB_TOKEN }}"
+# name : TEST WORKFLOW2
+# run-name : Run by ${{ github.actor }}
+# on : [pull_request]
+# jobs : 
+#   Test : 
+#     name : TEST JOB2
+#     runs-on : ubuntu-latest
+#     permissions : 
+#       contents : read
+#       pull-requests: write
+#     # TOKENはJOBレベルで定義することも可能
+#     # だが、この場合にはすべてのSTEPで利用可能となり、セキュリティリスクが高まる
+#     # 使うSTEPレベルで定義することがベター
+#     steps : 
+#       - uses : actions/checkout@v4
+#       - name : COMMENT PULL REQUEST
+#         run : gh pr comment "${GITHUB_HEAD_REF}" --body "Hello, ${GITHUB_ACTOR}! This is a test comment."
+#         env :
+#           GITHUB_TOKEN : "${{ secrets.GITHUB_TOKEN }}"
+
+name: Pull Request Status Check
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+
+jobs:
+  check1:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: something test1
+        run: exit 1
+
+  check2:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: something test2
+        run: exit 0
